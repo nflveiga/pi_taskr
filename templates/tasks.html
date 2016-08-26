@@ -1,33 +1,37 @@
 {% extends "_base.html" %}
 {% block content %}
-
+<div class="jumbotron">
 <h1>Bem-vindo ao Pi_taskr!</h1>
 <a href="/logout">Logout</a>
+</div>
+<div class="container">
 <div class="add-task">
     <h3>Adicionar tarefa</h3>
-    <form action="{{url_for('new_task')}}" method="post">
+    <div class="row">
+    <form class="form-inline" action="{{url_for('new_task')}}" method="post">
         <label>Tarefa:</label>
-        <input name="name" type="text">
+        <input class="form-control" name="name" type="text">
         <label>Para:</label>
-        <select name="user">
+        <select class="form-control" name="user">
             <option value="nuno">Nuno</option>
             <option value="jojo">Jojo</option>
             <option value="both">Ambos</option>
         </select>
         <label>Limite:</label>
-        <input name="due_date" type="text">
+        <input class="form-control" name="due_date" type="date">
         <label>Prioridade:</label>
-        <select name="priority">
+        <select class="form-control" name="priority">
             <option value="3">Tranquilo</option>
             <option value="2">Urgente</option>
             <option value="1">Emergente</option>
         </select>
-        <input class="button" type="submit" value="Gravar">
+        <input class="form-control" class="button" type="submit" value="Gravar">
     </form>
+    </div>
 <div class="entries">
 <h2>Tarefas a realizar</h2>
 <div class="datagrid">
-    <table>
+    <table class="table">
         <thead>
             <tr>
             <td>Tarefa</td>
@@ -54,9 +58,11 @@
         </tbody>
     </table>
 </div>
-
+<br>
+<br>
+<h2>Tarefas realizadas</h2>
 <div class="datagrid">
-    <table>
+    <table class="table">
         <thead>
             <tr>
             <td>Tarefa</td>
@@ -80,6 +86,8 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
+</div>
 </div>
 </div>
 {% endblock %}        

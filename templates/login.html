@@ -1,15 +1,15 @@
 {% extends "_base.html" %}
 {% block content %}
-<h1>Bem-vindo ao Pi_Taskr!</h1>
-<h3>LOGIN:</h3>
-
-<form method="post" action="/">
+  <div class="wrapper">
+    <form class="form-horizontal form-signin" method="post" action="/">      
+      <h2 class="form-signin-heading">Pi_Taskr - Login</h2>
     <label>Utilizador: </label>
-    <input type="text" name="username" value="{{request.form.username}}">
+    <input class="form-control" type="text" name="username" value="{{request.form.username}}">
     <label>Password: </label>
-    <input type="password" name="password" value="{{request.form.password}}">
-    <input type="submit" value="Login">
-</form>
+    <input class="form-control" type="password" name="password" value="{{request.form.password}}">
+    <input class="btn-info login-btn form-control" type="submit" value="Login">
+    </form>
+    </div>
 
 {% endblock %}
 
