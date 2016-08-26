@@ -1,0 +1,86 @@
+{% extends "_base.html" %}
+{% block content %}
+
+<h1>Bem-vindo ao Pi_taskr!</h1>
+<a href="/logout">Logout</a>
+<div class="add-task">
+    <h3>Adicionar tarefa</h3>
+    <form action="{{url_for('new_task')}}" method="post">
+        <label>Tarefa:</label>
+        <input name="name" type="text">
+        <label>Para:</label>
+        <select name="user">
+            <option value="nuno">Nuno</option>
+            <option value="jojo">Jojo</option>
+            <option value="both">Ambos</option>
+        </select>
+        <label>Limite:</label>
+        <input name="due_date" type="text">
+        <label>Prioridade:</label>
+        <select name="priority">
+            <option value="3">Tranquilo</option>
+            <option value="2">Urgente</option>
+            <option value="1">Emergente</option>
+        </select>
+        <input class="button" type="submit" value="Gravar">
+    </form>
+<div class="entries">
+<h2>Tarefas a realizar</h2>
+<div class="datagrid">
+    <table>
+        <thead>
+            <tr>
+            <td>Tarefa</td>
+            <td>Para</td>
+            <td>Data-limite</td>
+            <td>Prioridade</td>
+            <td>Gerir</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for task in open_tasks %}
+        <tr>
+            <td>{{task.name}}</td>
+            <td>{{task.user}}</td>
+            <td>{{task.due_date}}</td>
+            <td>{{task.priority}}</td>
+            <td>
+                <a href="{{url_for('complete', task_id=task.task_id)}}">Done!</a>
+                <a href="{{url_for('delete_entry', task_id=task.task_id)}}">Apagar</a>
+                
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="datagrid">
+    <table>
+        <thead>
+            <tr>
+            <td>Tarefa</td>
+            <td>Para</td>
+            <td>Data-limite</td>
+            <td>Prioridade</td>
+            <td>Gerir</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for task in closed_tasks %}
+        <tr>
+            <td>{{task.name}}</td>
+            <td>{{task.user}}</td>
+            <td>{{task.due_date}}</td>
+            <td>{{task.priority}}</td>
+            <td>
+                <a href="{{url_for('delete_entry', task_id=task.task_id)}}">Apagar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}        
+    

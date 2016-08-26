@@ -1,0 +1,17 @@
+{% extends "_base.html" %}
+{% block content %}
+<h1>Bem-vindo ao Pi_Taskr!</h1>
+<h3>LOGIN:</h3>
+
+<form method="post" action="/">
+    <label>Utilizador: </label>
+    <input type="text" name="username" value="{{request.form.username}}">
+    <label>Password: </label>
+    <input type="password" name="password" value="{{request.form.password}}">
+    <input type="submit" value="Login">
+</form>
+
+{% endblock %}
+
+
+    
